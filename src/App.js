@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import People from './assets/pouple.svg'
 import Arrow from './assets/arrow.svg'
@@ -7,8 +7,22 @@ import Trash from './assets/trash.svg'
 import {Container, H1, ContainerItens, Image, InputLabel, Input, Button, User} from "./styles";
 
 function App() {
-  const users = [{id: Math.random(), name:"Max", age: 31 },
-  {id: Math.random(), name:"Maria", age: 53 }]
+  //const users = []
+  const [users, setUsers] = useState([])
+  const [name, setName] = useState([])
+  const [age, setAge] = useState([])
+
+function addNweUser (){
+  setUsers([{id:Math.random(),name, age}])
+}
+
+function changeInputName (event){
+  setName(event.target.value)
+}
+
+function changeInputAge (event){
+  setAge(event.target.value)
+}
   
   return (
     <Container>
@@ -17,12 +31,14 @@ function App() {
         <H1>Olá</H1>
 
         <InputLabel>Nome</InputLabel>
-        <Input placeholder="Nome"/>
+        <Input onChange={changeInputName} placeholder="Nome"/>
 
         <InputLabel>Idade</InputLabel>
-        <Input placeholder="Idade"/>
+        <Input onChange={changeInputAge} placeholder="Idade"/>
 
-        <Button>Cadastrar <img alt="seta" src={Arrow} /></Button>
+        <Button onClick={addNweUser}>
+          Cadastrar <img alt="seta" src={Arrow} />
+        </Button>
         
         <ul>
           {users.map((user) => (
