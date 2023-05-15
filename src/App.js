@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import People from './assets/pouple.svg'
+import Arrow from './assets/arrow.svg'
+import Trash from './assets/trash.svg'
+
+import {Container, H1, ContainerItens, Image, InputLabel, Input, Button, User} from "./styles";
 
 function App() {
+  const users = [{id: Math.random(), name:"Max", age: 31 },
+  {id: Math.random(), name:"Maria", age: 53 }]
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+     <Image alt="logo-image" src={People}/>
+      <ContainerItens>
+        <H1>Olá</H1>
+
+        <InputLabel>Nome</InputLabel>
+        <Input placeholder="Nome"/>
+
+        <InputLabel>Idade</InputLabel>
+        <Input placeholder="Idade"/>
+
+        <Button>Cadastrar <img alt="seta" src={Arrow} /></Button>
+        
+        <ul>
+          {users.map((user) => (
+            <User key={user.id}>
+              <p>{user.name}</p> <p>{user.age}</p>
+              <button><img src={Trash} alt="lixo"/></button>
+            </User>
+          ))}
+        </ul>
+
+      </ContainerItens>
+    </Container>
   );
 }
 
-export default App;
+export default App
