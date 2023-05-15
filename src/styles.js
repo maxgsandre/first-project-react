@@ -140,7 +140,7 @@ export const Button = styled.button`
     
     Button {
         background: none;
-        border: none:
+        border: none;
         cursor: pointer;
     }
     `;
